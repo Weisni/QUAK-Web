@@ -6,7 +6,9 @@ QUAK is a browser-based scheduling poll with availability calendars, timezone-aw
 
 ## Use
 
-On phones, QUAK uses guided screens instead of the full dashboard: **name/timezone → dates → review and reply link**. Back and menu/resume preserve the active response or selected package. Empty replies require explicit confirmation. The start menu also provides invitation creation, saved invitations and response analysis. Optional file actions and timezone settings are expandable. Desktop retains the direct editing interface.
+On desktop and phones, QUAK uses guided task screens: **name/timezone → dates → review and reply link**. Back and menu/resume preserve the active response or selected package. Empty replies require explicit confirmation. The start menu also provides invitation creation, saved invitations and response analysis. Optional file actions and timezone settings are expandable. Desktop uses wider layouts and centered dialogs while keeping the same steps.
+
+The calendar provides a clickable overview across the offered month span. Cards show offered and selected dates; empty months stay visible as disabled gaps. Analysis additionally shows days with any participant availability, without implying a common matching slot. Jumping months preserves selections. Buttons use distinct line icons for links, downloads, sharing, copying and clear month arrows.
 
 Invitation creation separates the title from offered dates. Analysis proceeds through collection, search criteria, results and the final package. Newly shared links include an app-version parameter to avoid a cached older interface; old fragment links still work.
 
@@ -32,6 +34,7 @@ A private release publisher verifies the release artifact and pushes only allowl
 - [x] Publish QUAK as a generic browser app with invitation/reply links and local collections.
 - [x] Verify ten replies, reload persistence, duplicate/replacement handling, deletion, backup restore and cross-tab updates using synthetic data.
 - [x] Add and browser-test guided mobile flows at 320px and 390px, including name gating, typed times, back/menu preservation, explicit declines and invitation management.
+- [x] Extend guided steps to desktop, add sparse multi-month navigation and distinguish action icons (v0.5.0; 100 automated tests plus local browser checks).
 - [x] Include release version and SHA256 in `site/version.json`.
 - [x] Configure automatic Pages deployment on distribution updates.
 - [ ] Confirm hosted operation on a physical iPhone.

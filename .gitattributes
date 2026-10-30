@@ -1,0 +1,3 @@
+site/index.html -text
+*.yml text eol=lf
+*.md text eol=lf

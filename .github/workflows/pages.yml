@@ -1,0 +1,42 @@
+name: Deploy QUAK Pages
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify distribution integrity
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const metadata=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+          const html=fs.readFileSync('site/index.html');
+          if(createHash('sha256').update(html).digest('hex')!==metadata.sha256)throw new Error('Site checksum mismatch');
+          const scripts=[...html.toString().matchAll(/<script\b([^>]*)>[\s\S]*?<\/script\s*>/gi)];
+          if(scripts.some(match=>/\bid\s*=\s*["']quakInvitationData["']/i.test(match[1])))throw new Error('Personal invitation is not a generic app');
+          console.log('Verified '+metadata.version);
+          JS
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

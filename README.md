@@ -6,6 +6,10 @@ QUAK is a browser-based scheduling poll with availability calendars, timezone-aw
 
 ## Use
 
+On phones, QUAK uses guided screens instead of the full dashboard: **name/timezone → dates → review and reply link**. Back and menu/resume preserve the active response or selected package. Empty replies require explicit confirmation. The start menu also provides invitation creation, saved invitations and response analysis. Optional file actions and timezone settings are expandable. Desktop retains the direct editing interface.
+
+Invitation creation separates the title from offered dates. Analysis proceeds through collection, search criteria, results and the final package. Newly shared links include an app-version parameter to avoid a cached older interface; old fragment links still work.
+
 1. Open the website in a modern browser, including Safari on iPhone.
 2. Create an invitation and choose **Einladungslink erstellen**, or open a received invitation link. File invitations can still be loaded with **Einladung laden**.
 3. Enter availability, choose **Antwortlink erstellen**, then copy/share the link back to the organizer. Every response link the organizer opens is collected automatically in that browser.
@@ -27,6 +31,7 @@ A private release publisher verifies the release artifact and pushes only allowl
 
 - [x] Publish QUAK as a generic browser app with invitation/reply links and local collections.
 - [x] Verify ten replies, reload persistence, duplicate/replacement handling, deletion, backup restore and cross-tab updates using synthetic data.
+- [x] Add and browser-test guided mobile flows at 320px and 390px, including name gating, typed times, back/menu preservation, explicit declines and invitation management.
 - [x] Include release version and SHA256 in `site/version.json`.
 - [x] Configure automatic Pages deployment on distribution updates.
 - [ ] Confirm hosted operation on a physical iPhone.
